@@ -43,6 +43,7 @@
     a {
         text-decoration: none;
         color: white;
+        font-size: 1.5em;
     }
     a:visited {
         color: white
