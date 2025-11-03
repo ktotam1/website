@@ -24,7 +24,7 @@
         display: none;
     }
     h1 {
-        font-size: 9vw;
+        font-size: max(50px,9vw);
         text-align: center;
         -webkit-user-select: none; /* Safari */        
         -moz-user-select: none; /* Firefox */
