@@ -20,9 +20,9 @@
     </button>
 
 </div>
-
+<div style="margin-top: 5em">
 {@render children()}
-
+</div>
 <style>
     :global(body) {padding: 0; margin: 0; height: 100%; background-color: white;}
     .chevron-button {
