@@ -23,7 +23,7 @@
     :root::-webkit-scrollbar {
         display: none;
     }
-     h1 {
+    h1 {
         font-size: 9vw;
         text-align: center;
         -webkit-user-select: none; /* Safari */        
