@@ -43,7 +43,7 @@
     a {
         text-decoration: none;
         color: white;
-        font-size: min(3vw, 24px);
+        font-size: min(5vw, 24px);
     }
     a:visited {
         color: white
@@ -56,6 +56,7 @@
         left: 50%;
         transform: translate(-50%, 0);
         color: black;
+        width: 100%;
         mix-blend-mode: difference;
         align-items: center;
     }
