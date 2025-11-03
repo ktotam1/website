@@ -9,7 +9,7 @@ My research interests include programming languages and formal verification. I a
         margin-top: 3vh;
     }
     p {
-        width: 30vw;
+        width: max(500px, 30vw);
         margin: auto;
     }
 </style>
