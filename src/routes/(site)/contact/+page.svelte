@@ -1,18 +1,23 @@
 <div>
-<h3>Contact Form</h3>
-Name <br>
-<input /> <br>
-
-Subject  <br>
-<input /> <br>
-
-Email <br>
-<input type="email"/> <br>
-
-Message <br>
-<textarea></textarea>
-<br>
-<button>Submit</button>
+<form method="POST" action="?/submit">
+	<label>
+		Name <br>
+		<input name="name" required>
+	</label> <br>
+    <label>
+		Subject <br>
+		<input name="subject" required>
+	</label> <br>
+	<label>
+		Email <br>
+		<input name="email" type="email" required>
+	</label > <br>
+    <label> 
+        Message <br>
+        <textarea name="msg" required></textarea>
+    </label> <br>
+	<button>Submit</button>
+</form>
 </div>
 
 <style>

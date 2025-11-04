@@ -1,21 +1,24 @@
 
 <script>
+    import { applyAction } from "$app/forms";
     import Chevron from "$lib/Chevron.svelte";
     import { fade, slide } from 'svelte/transition';
+    import { page  } from '$app/state';
+   
     /** @type {boolean} */
     let open = $state(false);
     let { children } = $props();
 </script>
-<div class='sidebar' >
+<div class='navbar' >
     {#if open}
-        <nav out:slide={{duration: 200, axis:'y'}} in:slide={{duration: 200, axis:'y'}} class='sidebar-contents'>
-            <a class="nav-elem" href={`/`}>Home</a>
+        <nav out:slide={{duration: 200, axis:'y'}} in:slide={{duration: 200, axis:'y'}} class='navbar-contents'>
+            <a style={page.route.id == "/(site)" ? "text-decoration: underline" : ""} class="nav-elem" href={`/`}>Home</a>
             {#each ['About', 'Projects', 'Contact'] as link, i}
-                <a class="nav-elem" href={`/${link.toLowerCase()}`}>{link}</a>
+                <a style={page.route.id == "/(site)/" + link.toLowerCase() ? "text-decoration: underline" : ""} class="nav-elem" href={`/${link.toLowerCase()}`}>{link}</a>
             {/each}
         </nav>
     {/if}
-    <button class="chevron-button" onclick={() =>open = !open}>
+    <button class="chevron-button" onclick={() => open = !open}>
          <Chevron open={open} style='color: white; mix-blend-mode: difference;' />
     </button>
 
@@ -38,7 +41,6 @@
     }
     .nav-elem {
         margin: .5em;
-        
     }
     a {
         text-decoration: none;
@@ -48,15 +50,18 @@
     a:visited {
         color: white
     }
-    .sidebar{
+    .navbar-contents {
+        margin-top: 1rem ;
+    }
+    .navbar{
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 0rem;
         left: 50%;
         transform: translate(-50%, 0);
         color: black;
         width: 100%;
+        top: 0rem;
         mix-blend-mode: difference;
         align-items: center;
     }
