@@ -17,6 +17,7 @@
 <h1 class="name"> ALEXANDER <br> M&Uuml;LLER</h1>
 {#each {length: 4}, n}
 <section id='${n}'>
+    a
 </section>
 {/each}
 <style>
@@ -35,7 +36,7 @@
     .name{ 
         color: white;
         position: fixed;
-        top: 50%;
+        top: 50vh;
         left: 50%;
         mix-blend-mode: difference;
         transform: translate(-50%, -75%) 
