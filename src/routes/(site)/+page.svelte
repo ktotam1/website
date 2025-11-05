@@ -17,7 +17,7 @@
 <h1 class="name"> ALEXANDER <br> M&Uuml;LLER</h1>
 {#each {length: 4}, n}
 <section id='${n}'>
-    a
+
 </section>
 {/each}
 <style>
