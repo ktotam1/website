@@ -1,21 +1,24 @@
 <script>
     import { onMount } from 'svelte';
-    
 	onMount(() => {
-        let scrollTo = false;
-        (function scroll(){
+        let scrollTo = false
+        let interval = setInterval(() => {
             if(scrollTo) {
                 document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'})
             } else {
                 document.getElementById('$2')?.scrollIntoView({ behavior: 'smooth'})
             }
             scrollTo = !scrollTo
-            setTimeout(scroll, 2000);
-        })();
-	});
+        }, 2000)
+
+        return () => {
+            console.log("clear interval")
+            clearInterval(interval)
+        }
+    });
 </script>
 <h1 class="name"> ALEXANDER <br> M&Uuml;LLER</h1>
-{#each {length: 4}, n}
+{#each {length: 5}, n}
 <section id='${n}'>
 
 </section>

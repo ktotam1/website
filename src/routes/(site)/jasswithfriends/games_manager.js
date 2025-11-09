@@ -13,8 +13,8 @@ class Card {
 class Deck {
     constructor(){
         this.cards = []
-        for(suit in suits){
-            for(rank in ranks){
+        for(const suit of suits){
+            for(const rank of ranks){
                 this.cards.push(new Card(suit, rank))
             }
         }
@@ -36,19 +36,28 @@ class Deck {
     }
 }
 
-class Player {
-    constructor(playerID){
+export class Player {
+    constructor(playerID, username){
         this.id = playerID;
         this.hand = []
+        this.username  = username
     }
 
     setHand(hand){
         this.hand = []
     }
+
+    getPlayer() {
+        return {
+            username: this.username,
+            playerID: this.playerID 
+        }
+    }
 }
 
 class Game {
-    constructor(gameOwner){
+    constructor(gameOwner, gameID){
+        this.gameID = gameID
         this.gameOwner = gameOwner
         this.players = []
         this.maxPoints = 2000
@@ -91,8 +100,10 @@ class Game {
     assignHands(){
         this.deck.shuffle();
         let hands = this.deck.deal();
-        for(let i = 0; i < 4; i++){
-            this.players[i].setHand(hands[i]);
+        console.log("players", this.players)
+
+        for(let i = 0; i < this.players.length; i++){
+            this.players[i]?.setHand(hands[i]);
         }
     }
 
@@ -107,8 +118,12 @@ class Game {
         return this.players[this.currentPlayerTurn]
     }
 
-    getGameState(){
-
+    getGameState(playerID){
+        return {
+            gameID: this.gameID,
+            players: this.players.map(player => player.getPlayer()),
+            gameState: this.gameState
+        }
     }
 
     play(player, card){
@@ -131,18 +146,21 @@ class GameManager {
         this.games = []
     }
 
-    createGame(gameOwner){
-        this.games.push(new Game(gameOwner));
+    createGame(gameOwner, gameID){
+        this.games.push(new Game(gameOwner, gameID));
     }
 
     destroyGame(gameOwner){
         this.games = this.games.filter(game => game.gameOwner != gameOwner)
     }
 
-    getGame(gameOwner){
-        this.games.find(game => game.gameOwner == gameOwner)
+    getGame(gameID){
+        return this.games.find(game => game.gameID == gameID)
+    }
+
+    getGameByOwner(gameOwner){
+        return this.games.find(game => game.gameOwner == gameOwner)
     }
 }
-
 
 export const gameManager = new GameManager();  

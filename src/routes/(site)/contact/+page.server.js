@@ -1,9 +1,8 @@
 
 export const actions = {
-	// @ts-ignore
+	//TODO: text it to me on telegram idk
 	submit: async ({cookies, request}) => {
-		console.log("submit");
 		const data = await request.formData(); 
-		console.log(data.get('name'), data.get('email'), data.get('subject'), data.get('msg'));
+		console.log("new message:", data.get('name'), data.get('email'), data.get('subject'), data.get('msg'));
 	}
 };	

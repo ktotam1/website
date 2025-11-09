@@ -1,29 +1,31 @@
 <script>
+    import { enhance } from '$app/forms';
+
     let {data} = $props();
+
+    
 </script>
 <div>
-    {#if data?.username}
         hello, {data.username} <br>
         <form method="POST" action="?/logout">
             <button>logout</button>
         </form>
         create or join game 
         <br>
-        <form method="POST" action="?/createGame">
+        <form method="POST" action="?/createGame" use:enhance={({formData}) => {
+            formData.append("gameOwner", data.userid)
+            formData.append("username", data.username)
+        }}>
             <button>create game</button>
         </form> 
         <br>
-        <form method="POST" action="?/joinGame">
+        <form method="POST" action="?/joinGame" use:enhance={({formData}) => {
+            formData.append("gameOwner", data.userid)
+            formData.append("username", data.username)
+        }}>
             <input required placeholder="game id" name="id"/> <br>
             <button>join game</button>
         </form> 
-    {:else}
-        Set a username: 
-        <form method="POST" action="?/login">
-        <input required name="username" placeholder="my username"/>
-        <button>set</button>
-        </form>
-    {/if}
 </div>
 
 

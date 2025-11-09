@@ -1,6 +1,5 @@
 <script>
     let {data} = $props()
-    console.log(data)
 </script>
 <div>
 game id : {data.id}
