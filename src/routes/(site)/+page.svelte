@@ -2,6 +2,12 @@
     import { onMount } from 'svelte';
 	onMount(() => {
         let scrollTo = false
+        if(scrollTo) {
+                document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'})
+            } else {
+                document.getElementById('$2')?.scrollIntoView({ behavior: 'smooth'})
+            }
+        scrollTo = !scrollTo
         let interval = setInterval(() => {
             if(scrollTo) {
                 document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'})
