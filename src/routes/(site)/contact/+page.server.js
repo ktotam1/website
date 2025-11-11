@@ -1,5 +1,6 @@
-import { BOT_KEY, CHAT_ID } from "$env/dynamic/private";
-
+import { env } from "$env/dynamic/private";
+const BOT_KEY = env.BOT_KEY;
+const CHAT_ID = env.CHAT_ID;
 const telegramUrl = "https://api.telegram.org/bot" + BOT_KEY;
 
 export const actions = {
