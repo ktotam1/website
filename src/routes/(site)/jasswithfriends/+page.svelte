@@ -13,14 +13,14 @@
         create or join game 
         <br>
         <form method="POST" action="?/createGame" use:enhance={({formData}) => {
-            formData.append("gameOwner", data.userid)
+            formData.append("userid", data.userid)
             formData.append("username", data.username)
         }}>
             <button>create game</button>
         </form> 
         <br>
         <form method="POST" action="?/joinGame" use:enhance={({formData}) => {
-            formData.append("gameOwner", data.userid)
+            formData.append("userid", data.userid)
             formData.append("username", data.username)
         }}>
             <input required placeholder="game id" name="id"/> <br>

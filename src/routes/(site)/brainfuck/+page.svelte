@@ -1,37 +1,47 @@
 <script>
     import { untrack } from "svelte";
     import { interpret } from "./brainfuck";
+    import { text } from "@sveltejs/kit";
     let input = $state("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
     let output = $state("")
     let state = $state([])
     let dataPointer = $state(0)
     let errors = $state("")
+    let txtarea;
     // svelte-ignore state_referenced_locally
     let instructionPointer = $state(input.length)
+    //auto interpret
     $effect(() => {
-       
         if(input.length ===  untrack(() => instructionPointer) + 1) instructionPointer++; 
-        if(input.length <  untrack(() => instructionPointer)) instructionPointer = input.length; 
-        console.log("ip",  untrack(() => instructionPointer))
+        if(input.length <  untrack(() => instructionPointer)) instructionPointer = input.length;
     })
+    //run interpreter
     $effect(() =>
     {
         let obj = interpret(input.slice(0,instructionPointer))
         state = obj.state;
         output = obj.output; 
+        
         dataPointer = obj.pos;
         errors = obj.errors;
     })
+
+
+    
 </script>
 
 <div class="view">
     <div class="left">
         <!-- svelte-ignore a11y_autofocus -->
-        <div bind:innerText={input} contenteditable="true"  autofocus={true} class="input"></div>
+         <!-- bind:innerHTML={ 
+            ()=> `<mark>${input.slice(0,instructionPointer)}</mark>${input.slice(instructionPointer, input.length)}`,
+            (v)=> null}  -->
+        <div bind:this={txtarea} bind:innerText={input} contenteditable="true"  autofocus={true} class="input"></div>
         <div class="buttons">
-            <button onclick={() => {instructionPointer=Math.min(input.length, instructionPointer+1); console.log('step', instructionPointer)}}>step</button>
-            <button onclick={() => {instructionPointer=Math.max(0,instructionPointer-1); console.log('back', instructionPointer)}}>back</button>
+            <button onclick={() => {instructionPointer=Math.min(input.length, instructionPointer+1)}}>step</button>
+            <button onclick={() => {instructionPointer=Math.max(0,instructionPointer-1)}}>back</button>
             <button onclick={() => {instructionPointer=input.length}}>run to end</button>
+            <button onclick={()=> instructionPointer=0}>back to start</button>
         </div>
     </div>
     <div class="right">
@@ -105,7 +115,7 @@ Consisting of an infinite tape of bytes, an instruction pointer, and a data poin
         text-align: center;
     }
     .selected{
-        border: solid 1px green;
+        border: solid 2px green;
         width: 2rem;
         height: 1rem;
         text-align: center;

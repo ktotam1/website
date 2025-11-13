@@ -35,7 +35,7 @@ export const actions = {
         let gameid = crypto.randomUUID();
         //redirect to room page
         // console.log(data)
-        gameManager.createGame(new Player(data.get('gameOwner'), data.get("username")), gameid);
+        gameManager.createGame(new Player(data.get('userid'), data.get("username")), gameid);
         redirect(303, 'jasswithfriends/room/' + gameid);
 	},
     destroyGame: async ({cookies, request}) => {
@@ -60,8 +60,13 @@ export const actions = {
         redirect(303, '/jasswithfriends/game/' + id);
     },
     playCard: async({cookies, request}) => {
-        //todo: play the damn game
-
+        console.log("play card")
+        let data = await request.formData()
+        let id = data.get('gameid')
+        console.log(id)
+        let game = gameManager.getGame(id)
+        
+        game.playCard()
     },
     getState: async({cookies, request}) => {
         

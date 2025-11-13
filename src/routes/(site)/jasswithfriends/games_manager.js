@@ -8,6 +8,9 @@ class Card {
     name(){
         return this.rank + " of " + this.suit
     }
+    getCard(){
+        return {suit: this.suit, rank: this.rank}
+    }
 }
 
 class Deck {
@@ -44,7 +47,7 @@ export class Player {
     }
 
     setHand(hand){
-        this.hand = []
+        this.hand = hand
     }
 
     getPlayer() {
@@ -103,7 +106,9 @@ class Game {
         console.log("players", this.players)
 
         for(let i = 0; i < this.players.length; i++){
+            // console.log(hands[i])
             this.players[i]?.setHand(hands[i]);
+
         }
     }
 
@@ -119,10 +124,13 @@ class Game {
     }
 
     getGameState(playerID){
+        console.log()
         return {
             gameID: this.gameID,
             players: this.players.map(player => player.getPlayer()),
-            gameState: this.gameState
+            gameState: this.gameState,
+            playedCards: this.playedCards,
+            hand: this.players.find(player=>player.id==playerID).hand.map(c => c.getCard())
         }
     }
 
@@ -155,7 +163,8 @@ class GameManager {
     }
 
     getGame(gameID){
-        return this.games.find(game => game.gameID == gameID)
+        let game = this.games.find(game => game.gameID == gameID)
+        return game
     }
 
     getGameByOwner(gameOwner){
