@@ -1,4 +1,21 @@
-<div>
+<script>
+    import {add}  from '$lib/utils/Notifications/acts'
+    import Notifications from '$lib/utils/Notifications/Notifications.svelte'
+    let {data, form} = $props()
+    $effect(()=>{
+        if(form?.success){
+            console.log("success!")
+            add({mode: "success", message: "Message sent!", lifetime: 2})
+        }
+        if(form?.error){
+            add({mode: "error", message: "Message failed. Please try again later.", lifetime: 3})
+        }
+        if(form?.bad){
+            console.log("bad")
+            add({mode: "error", message: "Please fill out all the fields", lifetime: 3})
+        }
+    })
+</script><div>
 <form method="POST" action="?/submit">
 	<label>
 		Name <br>
@@ -18,6 +35,7 @@
     </label> <br>
 	<button>Submit</button>
 </form>
+<Notifications />
 </div>
 
 <style>

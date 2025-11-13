@@ -1,4 +1,5 @@
 <script>
+    //todo: move interpreter logic into this script so that the instruction pointer can be directly controlled by step button
     import { untrack } from "svelte";
     import { interpret } from "./brainfuck";
     let input = $state("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
