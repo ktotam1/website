@@ -50,6 +50,10 @@ export class Player {
         this.hand = hand
     }
 
+    remove(card){
+        this.hand = this.hand.filter(x => x.rank != card.rank || x.suit !=card.suit)
+    }
+
     getPlayer() {
         return {
             username: this.username,
@@ -65,7 +69,7 @@ class Game {
         this.players = []
         this.maxPoints = 2000
         this.gameState = "lobby"
-
+        this.currentTrump = "none"
         this.deck = new Deck()
 
         this.playedCards = [];
@@ -113,39 +117,67 @@ class Game {
     }
 
     startGame(){
-        if(this.players.length = 4) {
+        if(true || this.players.length == 4) { //todo: remove true
             this.gameState = "playing"
             this.assignHands()
         }
     }
 
     currentPlayer(){
-        return this.players[this.currentPlayerTurn]
+        return this.players[this.currentPlayerTurn] //todo: fix this
     }
 
     getGameState(playerID){
-        console.log()
         return {
             gameID: this.gameID,
             players: this.players.map(player => player.getPlayer()),
             gameState: this.gameState,
             playedCards: this.playedCards,
-            hand: this.players.find(player=>player.id==playerID).hand.map(c => c.getCard())
+            hand: this.players.find(player=>player.id==playerID).hand.map(c => c.getCard()),
+            isMyTurn: true,
+            playableCards: [],
+            shouldPickTrump: false,
+            currentTrump: this.currentTrump,
+        }
+    }
+
+    setTrump(player, trump){
+        //check if it is the players turn to set the trump 
+        this.currentTrump = trump
+    }
+
+    legalCards(hand, playedCards, trump){
+        //if first card is suit trump
+        if(suits.includes(trump) && playedCards[0].suit == trump) {
+            //if the only trump is the jack, all cards are valid
+            if(hand.filter(x => x.suit == trump).length == 1 && hand.find(x=>x.suit==trump).rank=="under")  { return hand; }   
+            //otherwise, if have trump, must play trump
+            else if(hand.filter(x.suit == trump).length > 0) { return hand.filter(x => x.suit == trump); }
+            else { return hand; }
+        } else {
+            //first card is not a trump => can play trump or that suit, if we have it
+
         }
     }
 
     play(player, card){
         //check if the right player is playing a card they own
-        if(player.id != this.currentPlayer().id || !this.currentPlayer().hand.includes(card)) return;
+        // if(player.id != this.currentPlayer().id || !this.currentPlayer().hand.includes(card)) return;
         //check if the card is playable 
         if(false) return; 
         //
-
-
-        this.currentPlayerTurn = (this.currentPlayerTurn+1)%4
-        if(this.currentPlayerTurn == 0){
+        this.playedCards.push({card,player})
+        player = this.players.find(x=>x.playerID == player);
+        player.remove(card)
+        //determine who won the trick
+        //set it as that player's turn
+        if(this.playedCards.length == 4){
 
         }
+        // this.currentPlayerTurn = (this.currentPlayerTurn+1)%4
+        // if(this.currentPlayerTurn == 0){
+
+        // }
     }
 }
 

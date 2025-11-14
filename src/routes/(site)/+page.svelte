@@ -18,7 +18,6 @@
         }, 2000)
 
         return () => {
-            console.log("clear interval")
             clearInterval(interval)
         }
     });

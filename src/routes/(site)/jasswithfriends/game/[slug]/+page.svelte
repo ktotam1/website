@@ -19,7 +19,7 @@
         console.log(data.id)
     })
 </script>
-<div>
+<div class="screen">
 game id : {data.id}
 
 <div class="game">
@@ -30,8 +30,9 @@ game id : {data.id}
         {#each data.game.hand as card} 
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
-             <form method="POST" use:enhance={()=>{
+             <form method="POST" use:enhance={({formData})=>{
                     formData.append("gameid", data.id)
+                    formData.append("card", JSON.stringify(card))
              }} action="/jasswithfriends?/playCard">
             <button  class="card">{card.rank} of {card.suit}</button>    
             </form>
@@ -40,7 +41,7 @@ game id : {data.id}
 </div>
 </div>
 <style>
-    div {
+    .screen {
         text-align: center;
     }
     .card{
