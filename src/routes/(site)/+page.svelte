@@ -15,7 +15,7 @@
                 document.getElementById('$2')?.scrollIntoView({ behavior: 'smooth'})
             }
             scrollTo = !scrollTo
-        }, 2000)
+        }, 3000)
 
         return () => {
             clearInterval(interval)

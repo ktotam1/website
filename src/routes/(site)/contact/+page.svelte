@@ -47,4 +47,7 @@
         width: 30vw;
         height: 20vh;
     }
+    label{
+        /* hyphens: none; */
+    }
 </style>
