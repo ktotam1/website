@@ -4,7 +4,7 @@
         <!-- <dt><a href="/jasswithfriends">Jass With Friends</a></dt>
             <dd>The Swiss card game Jass</dd> -->
             <dt><a href="https://github.com/AnirudhhRamesh/Intelligent-Traffic-Backend">Making Intelligent Things</a></dt>
-                <dd>Autonmous Model Cars</dd>
+                <dd>Autonomous Model Cars</dd>
             <!-- <dt>HTML Rasterizer</dt>
                 <dd>Rendering with HTML elements ?</dd>
             <dt>SBB Map</dt>
