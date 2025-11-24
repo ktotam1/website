@@ -14,7 +14,7 @@ My research interests include programming languages and formal verification. I a
 </div>
 <style>
     img{
-        width: min(max(500px, 30vw), 90vw);
+        width: min(max(900px, 30vw), 90vw);
     }
     div {
         text-align: center;
