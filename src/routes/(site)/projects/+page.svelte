@@ -1,8 +1,8 @@
 <div>
     <h1>My projects:</h1>
     <dl>
-        <dt><a href="/jasswithfriends">Jass With Friends</a></dt>
-            <dd>The Swiss card game Jass</dd>
+        <!-- <dt><a href="/jasswithfriends">Jass With Friends</a></dt>
+            <dd>The Swiss card game Jass</dd> -->
             <dt><a href="https://github.com/AnirudhhRamesh/Intelligent-Traffic-Backend">Making Intelligent Things</a></dt>
                 <dd>Autonmous Model Cars</dd>
             <!-- <dt>HTML Rasterizer</dt>
@@ -15,6 +15,7 @@
         <dt><a href="/brainfuck">Brainfuck Interpreter + Visualizer</a></dt>
         <!-- <dt>CPU Visualizer</dt> -->
     </dl>
+    <h1>This website is currently under construction. Please check back later.</h1>
 </div>
 
 <style>
