@@ -1,13 +1,9 @@
 <script>
     import { onMount } from 'svelte';
 	onMount(() => {
-        let scrollTo = false
-        if(scrollTo) {
-                document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'})
-            } else {
-                document.getElementById('$2')?.scrollIntoView({ behavior: 'smooth'})
-            }
-        scrollTo = !scrollTo
+        setTimeout(() => document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'}), 10)
+
+        let scrollTo=false;
         let interval = setInterval(() => {
             if(scrollTo) {
                 document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'})
@@ -29,6 +25,9 @@
 </section>
 {/each}
 <style>
+    :global(body){
+        overflow: hidden;
+    }
     :root::-webkit-scrollbar {
         display: none;
     }
