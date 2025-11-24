@@ -21,6 +21,7 @@
 <style>
     h1 {
         justify-self: center;
+        text-align: center;
     }
     dl {
         justify-self: center;
