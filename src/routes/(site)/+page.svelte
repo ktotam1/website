@@ -62,6 +62,7 @@
     } 
     section {
         height: 50vh;
+        height: calc(var(--vh, 1vh) * 50);
     }
     section:nth-child(even){
         background-color: black;
