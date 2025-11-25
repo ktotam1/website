@@ -25,6 +25,10 @@
     }
     dl {
         justify-self: center;
+        /* margin: auto; */
+        /* background-color: red; */
+        margin:auto;
+        width: fit-content;
     }
 
 
