@@ -55,7 +55,7 @@
         color: white;
         position: fixed;
         top: 50vh;
-        top: calc(var(--vh, 1vh) * 50);
+        top: calc(var(--vh, 1vh) * 51);
         left: 50%;
         mix-blend-mode: difference;
         transform: translate(-50%, -75%) 
