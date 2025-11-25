@@ -44,10 +44,8 @@
         text-align: center;
     }
     textarea {
-        width: 30vw;
+        width: min(max(600px, 20vw), 90vw);
         height: 20vh;
     }
-    label{
-        /* hyphens: none; */
-    }
+    
 </style>

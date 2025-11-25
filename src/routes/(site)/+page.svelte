@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
 	onMount(() => {
         setTimeout(() => document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'}), 10)
+		document.body.style.overflow = 'hidden';
 
         let scrollTo=false;
         let interval = setInterval(() => {
@@ -14,6 +15,8 @@
         }, 3000)
 
         return () => {
+            document.body.style.overflow = '';
+
             clearInterval(interval)
         }
     });
@@ -24,10 +27,13 @@
 
 </section>
 {/each}
+<!-- <svelte:body use:style={"overflow: hidden"} /> -->
+<!-- <svelte:window use:style={"overflow: hidden"} /> -->
+
 <style>
-    :global(body){
+    /* :global(body){
         overflow: hidden;
-    }
+    } */
     :root::-webkit-scrollbar {
         display: none;
     }
