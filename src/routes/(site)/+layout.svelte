@@ -27,7 +27,7 @@
 {@render children()}
 </div>
 <style>
-    :global(body) {padding: 0; margin: 0; height: 100%; background-color: pink;}
+    :global(body) {padding: 0; margin: 0; height: 100%; background-color: white;}
     .chevron-button {
         background: none;
         color: inherit;
