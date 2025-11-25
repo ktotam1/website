@@ -38,6 +38,8 @@
         outline: inherit;
         margin: auto;
         justify-self: center;
+        mix-blend-mode: difference;
+
     }
     .nav-elem {
         margin: .5em;
@@ -45,6 +47,8 @@
     a {
         text-decoration: none;
         color: white;
+        mix-blend-mode: difference;
+
         font-size: min(5vw, 24px);
          -webkit-user-select: none; /* Safari */        
         -moz-user-select: none; /* Firefox */
