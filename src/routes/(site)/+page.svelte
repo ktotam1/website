@@ -1,5 +1,10 @@
 <script>
     import { onMount } from 'svelte';
+    let innerHeight = $state(0);
+    let vh = $derived(innerHeight * 0.01)
+    $effect(()=>{
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    })
 	onMount(() => {
         setTimeout(() => document.getElementById('$1')?.scrollIntoView({ behavior: 'smooth'}), 10)
 		document.body.style.overflow = 'hidden';
@@ -28,7 +33,7 @@
 </section>
 {/each}
 <!-- <svelte:body use:style={"overflow: hidden"} /> -->
-<!-- <svelte:window use:style={"overflow: hidden"} /> -->
+<svelte:window bind:innerHeight={innerHeight} />
 
 <style>
     /* :global(body){
@@ -50,6 +55,7 @@
         color: white;
         position: fixed;
         top: 50vh;
+        top: calc(var(--vh, 1vh) * 50);
         left: 50%;
         mix-blend-mode: difference;
         transform: translate(-50%, -75%) 
