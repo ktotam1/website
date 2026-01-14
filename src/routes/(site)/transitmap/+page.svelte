@@ -79,10 +79,12 @@ async function loadMap() {
                 routes.setMap(map)
                 routes.addListener('mouseover', (event)=>{
                     var id = event.feature.getProperty('operator_number');
+                    let gauge = event.feature.getProperty('operator_gauge')
                     var myHTMLss = '<table>' +
                     '<tr><td>Abbr:</td><td>' + businesses.find(x=>x[18]==id)[10] + '</td></tr>' +
                     '<tr><td>Name:</td><td>' + businesses.find(x=>x[18]==id)[9]+ '</td></tr>' +
                     '<tr><td>ID:</td><td>' + id + '</td></tr>' +
+                    '<tr><td>Gauge:</td><td>' + gauge + '</td></tr>' +
                     '</table>';
                     infowindow.setContent(myHTMLss);
                     infowindow.setPosition(event.latLng);
