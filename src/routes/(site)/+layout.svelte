@@ -12,9 +12,9 @@
 <div class='navbar' >
     {#if open}
         <nav out:slide={{duration: 200, axis:'y'}} in:slide={{duration: 200, axis:'y'}} class='navbar-contents'>
-            <a style={page.route.id == "/(site)" ? "text-decoration: underline" : ""} class="nav-elem" href={`/`}>Home</a>
-            {#each ['About', 'Projects', 'Contact'] as link, i}
-                <a style={page.route.id == "/(site)/" + link.toLowerCase() ? "text-decoration: underline" : ""} class="nav-elem" href={`/${link.toLowerCase()}`}>{link}</a>
+            <!-- <a style={page.route.id == "/(site)" ? "text-decoration: underline" : ""} class="nav-elem" href={`/`}>Home</a> -->
+            {#each [{txt: 'Home', link: '/', linkc: ''}, {txt: 'About', link: '/about', linkc: '/about'}, {txt: 'Projects', link: '/projects', linkc: '/projects'}, {txt: 'Contact', link: '/contact', linkc: '/contact'}] as link, i}
+                <a style={page.route.id == "/(site)" + link.linkc ? "text-decoration: underline" : ""} class="nav-elem" href={`${link.link}`}>{link.txt}</a>
             {/each}
         </nav>
     {/if}

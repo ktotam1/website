@@ -63,6 +63,7 @@
     section {
         height: 50vh;
         height: calc(var(--vh, 1vh) * 51);
+        /* transform: rotate(90deg); */
     }
     section:nth-child(even){
         background-color: black;
