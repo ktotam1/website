@@ -14,6 +14,8 @@
                 <dd>Look into a Neural Network</dd> -->
         <dt><a href="/brainfuck">Brainfuck Interpreter + Visualizer</a></dt>
             <dd>Write Brainfuck code and see how it works!</dd>
+        <dt><a href="/transitmap">SBB Transit Map</a></dt>
+            <dd>See where SBB trains are and who owns which line!</dd>
         <!-- <dt>CPU Visualizer</dt> -->
     </dl>
     <h1>This website is currently under construction. Please check back later.</h1>
